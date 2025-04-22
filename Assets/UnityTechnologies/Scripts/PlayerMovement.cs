@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float turnSpeed = 20f;
     public bool isFrozen = false;
+    public float walkingSpeed = 1f;  // Normal walking speed
+    public float sprintSpeed = 2f;   // Sprinting speed
 
     Animator m_Animator;
     Rigidbody m_Rigidbody;
@@ -37,6 +39,17 @@ public class PlayerMovement : MonoBehaviour
 
         m_Movement.Set(horizontal, 0f, vertical);
         m_Movement.Normalize();
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            // Sprint Speed
+            m_Movement *= sprintSpeed;
+        }
+        else
+        {
+            // Regular Speed
+            m_Movement *= walkingSpeed;
+        }
 
         bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
         bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
