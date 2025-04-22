@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float turnSpeed = 20f;
+    public bool isFrozen = false;
 
     Animator m_Animator;
     Rigidbody m_Rigidbody;
@@ -23,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (isFrozen)
+        {
+            // Stop Movement
+            m_Movement = Vector3.zero;
+            m_Animator.SetBool("IsWalking", false);
+            return;
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
