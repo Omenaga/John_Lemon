@@ -1,0 +1,59 @@
+# ========================
+# Unity Project Git Attributes
+# ========================
+
+# --- TEXT FILES (Normalized to LF) ---
+# Scripts and config
+*.cs           text eol=lf
+*.js           text eol=lf
+*.boo          text eol=lf
+*.shader       text eol=lf
+*.compute      text eol=lf
+*.cginc        text eol=lf
+*.hlsl         text eol=lf
+*.json         text eol=lf
+*.xml          text eol=lf
+*.yaml         text eol=lf
+*.yml          text eol=lf
+*.txt          text eol=lf
+*.asmdef       text eol=lf
+*.asmref       text eol=lf
+*.rsp          text eol=lf
+*.vsconfig     text eol=lf
+*.md           text eol=lf
+*.uxml         text eol=lf
+*.uss          text eol=lf
+
+# Unity metadata
+*.meta         text eol=lf
+
+# Unity scenes and prefabs (text-based as of Unity 2018+ with forced text serialization)
+*.unity        text eol=lf
+*.prefab       text eol=lf
+*.asset        text eol=lf
+
+# --- BINARY FILES (Prevent Git from trying to diff or normalize) ---
+*.dll          binary
+*.exe          binary
+*.so           binary
+*.dylib        binary
+*.a            binary
+*.lib          binary
+*.png          binary
+*.jpg          binary
+*.jpeg         binary
+*.tga          binary
+*.gif          binary
+*.psd          binary
+*.mp3          binary
+*.ogg          binary
+*.wav          binary
+*.fbx          binary
+*.anim         binary
+*.controller   binary
+
+# --- OS / IDE / Unity Ignored Files (Optional) ---
+# These are usually in .gitignore but can be enforced here if needed:
+# *.sln         text
+# *.csproj      text
+# *.user        text
