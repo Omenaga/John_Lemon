@@ -476,6 +476,7 @@ MonoBehaviour:
   exitAudio: {fileID: 1383869089}
   caughtBackgroundImageCanvasGroup: {fileID: 260998473}
   caughtAudio: {fileID: 1409350850}
+  gameplayUICanvasGroup: {fileID: 2059674253}
 --- !u!1001 &107554488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6172,6 +6173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2059674252}
+  - component: {fileID: 2059674253}
   m_Layer: 5
   m_Name: GameplayUI
   m_TagString: Untagged
@@ -6200,6 +6202,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -188.99988}
   m_SizeDelta: {x: 450, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &2059674253
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059674251}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2122074856
 GameObject:
   m_ObjectHideFlags: 0

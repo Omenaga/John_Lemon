@@ -59,14 +59,7 @@ public class GameEnding : MonoBehaviour
         if (m_Timer > fadeDuration + displayImageDuration)
         {
             // Change if Difficulty is added
-            if (doRestart)
-            {
-                SceneManager.LoadScene(0);
-            }
-            else
-            {
-                Application.Quit();
-            }
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

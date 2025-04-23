@@ -7,10 +7,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public float turnSpeed = 20f;
     public bool isFrozen = false;
-    public float walkingSpeed = 1f; // Normal walking speed
-    public float sprintSpeed = 2f;  // Sprinting speed
-    public float maxSprintTime = 3f;   // Max sprinting time
-    public float sprintRechargeDuration = 10f; // Recharge Rate
+    public float walkingSpeed; // Normal walking speed
+    public float sprintSpeed;  // Sprinting speed
+    public float maxSprintTime;   // Max sprinting time
+    public float sprintRechargeDuration; // Recharge Rate
 
     private float sprintTimer = 0f;             // Current available sprint time
     private bool isSprinting = false;
@@ -45,6 +45,34 @@ public class PlayerMovement : MonoBehaviour
         if (sprintBar != null)
         {
             sprintBar.value = 1f; // Full bar
+        }
+
+        // Get Difficulty
+        string selectedDifficulty = DifficultySelection.difficultyLevel;
+
+        // Difficulty Settings
+        switch (selectedDifficulty)
+        {
+            case "Easy":
+                sprintSpeed = 3f;
+                maxSprintTime = 10f;
+                sprintRechargeDuration = 2.5f;
+                break;
+            case "Normal":
+                sprintSpeed = 2f;
+                maxSprintTime = 5f;
+                sprintRechargeDuration = 5f;
+                break;
+            case "Hard":
+                sprintSpeed = 1.5f;
+                maxSprintTime = 2.5f;
+                sprintRechargeDuration = 10f;
+                break;
+            case "Diabolical":
+                sprintSpeed = 1.25f;
+                maxSprintTime = 1.5f;
+                sprintRechargeDuration = 20f;
+                break;
         }
     }
 

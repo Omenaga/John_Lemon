@@ -7,15 +7,49 @@ public class FreezeUp : MonoBehaviour
 {
     public PlayerMovement player;
     public TextMeshProUGUI freezeMessage;
-    public float minFreezeInterval = 7f;
-    public float maxFreezeInterval = 20f;
+    public float minFreezeInterval;
+    public float maxFreezeInterval;
 
-    private string targetWord = "move";
+    private string targetWord;
     private int index = 0;
     private bool waitingForInput = false;
 
     void Start()
     {
+        // Get Difficulty
+        string selectedDifficulty = DifficultySelection.difficultyLevel;
+
+        // Difficulty Settings
+        switch (selectedDifficulty)
+        {
+            case "Easy":
+                minFreezeInterval = 10f;
+                maxFreezeInterval = 20f;
+                targetWord = "e";
+                break;
+            case "Normal":
+                minFreezeInterval = 10f;
+                maxFreezeInterval = 15f;
+                targetWord = "move";
+                break;
+            case "Hard":
+                minFreezeInterval = 7f;
+                maxFreezeInterval = 12f;
+                targetWord = "escape";
+                break;
+            case "Diabolical":
+                minFreezeInterval = 5f;
+                maxFreezeInterval = 10f;
+                targetWord = "nigerundayo";
+                break;
+        }
+
+         // Display the sentence on the UI
+        if (freezeMessage != null)
+        {
+            freezeMessage.text = "Type the word: " + targetWord;
+        }
+
         StartCoroutine(FreezeRoutine());
     }
 
@@ -24,6 +58,8 @@ public class FreezeUp : MonoBehaviour
         if (waitingForInput && Input.anyKeyDown)
         {
             string keyPressed = Input.inputString.ToLower();
+
+            Debug.Log(keyPressed);
 
             if (keyPressed == targetWord[index].ToString())
             {
