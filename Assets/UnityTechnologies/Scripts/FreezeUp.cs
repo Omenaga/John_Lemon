@@ -19,10 +19,10 @@ public class FreezeUp : MonoBehaviour
     // List of words for each difficulty
     private Dictionary<string, string[]> difficultyWords = new Dictionary<string, string[]>()
     {
-        { "Easy", new string[] {"e", "m", "c", "2"} },
-        { "Normal", new string[] {"go", "move", "run", "bolt"} },
-        { "Hard", new string[] {"escape", "break", "please", "motion", "ghost", "breakout"} },
-        { "Diabolical", new string[] {"nigerundayo", "pseudonism", "thorough", "through", "though", "gargoyle", "LohnJemon"} }
+        { "Easy", new string[] {"e", "m", "c", "2", "go"} },
+        { "Normal", new string[] {"move", "run", "bolt", "break", "ghost"} },
+        { "Hard", new string[] {"escape", "please", "motion", "gargoyle", "breakout"} },
+        { "Diabolical", new string[] {"nigerundayo", "diabolical", "pseudonism", "thorough", "through", "though", "LohnJemon"} }
     };
 
     void Start()
