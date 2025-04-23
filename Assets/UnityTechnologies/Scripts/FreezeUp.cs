@@ -14,19 +14,21 @@ public class FreezeUp : MonoBehaviour
     private int index = 0;
     private bool waitingForInput = false;
 
+    string selectedDifficulty = "Normal";
+
     // List of words for each difficulty
     private Dictionary<string, string[]> difficultyWords = new Dictionary<string, string[]>()
     {
         { "Easy", new string[] {"e", "m", "c", "2"} },
         { "Normal", new string[] {"go", "move", "run", "bolt"} },
-        { "Hard", new string[] {"escape", "break", "please"} },
-        { "Diabolical", new string[] { "nigerundayo" } }
+        { "Hard", new string[] {"escape", "break", "please", "motion"} },
+        { "Diabolical", new string[] {"nigerundayo", "progress", "movement", "breakout"} }
     };
 
     void Start()
     {
         // Get Difficulty
-        string selectedDifficulty = DifficultySelection.difficultyLevel;
+        selectedDifficulty = DifficultySelection.difficultyLevel;
 
         // Difficulty Settings
         switch (selectedDifficulty)
@@ -58,26 +60,62 @@ public class FreezeUp : MonoBehaviour
         {
             string keyPressed = Input.inputString.ToLower();
 
-            Debug.Log(keyPressed);
-
-            if (keyPressed == targetWord[index].ToString())
+            if (!string.IsNullOrEmpty(keyPressed))
             {
-                index++;
+                Debug.Log(keyPressed);
 
-                if (index >= targetWord.Length)
+                if (keyPressed == targetWord[index].ToString())
                 {
-                    // Player is unfrozen
-                    waitingForInput = false;
-                    player.isFrozen = false;
+                    index++;
+                    UpdateFreezeMessage();
+
+                    if (index >= targetWord.Length)
+                    {
+                        // Player is unfrozen
+                        waitingForInput = false;
+                        player.isFrozen = false;
+                        index = 0;
+                    }
+                }
+                else
+                {
+                    // Restart Progress
+                    StartCoroutine(FlashRed());
                     index = 0;
                 }
             }
+        }
+    }
+
+    void UpdateFreezeMessage()
+    {
+        if (freezeMessage == null || string.IsNullOrEmpty(targetWord))
+        {
+            return;
+        }
+
+        string sameText = "Type the word: ";
+
+        for (int i = 0; i < targetWord.Length; i++)
+        {
+            if (i < index)
+            {
+                // Past Letters
+                sameText += $"<color=green>{targetWord[i]}</color>";
+            }
+            else if (i == index)
+            {
+                // Current Letter
+                sameText += $"<color=yellow>{targetWord[i]}</color>";
+            }
             else
             {
-                // Restart Progress
-                index = 0;
+                // Remaining Letters
+                sameText += $"<color=white>{targetWord[i]}</color>";
             }
         }
+
+        freezeMessage.text = sameText;
     }
 
     IEnumerator FreezeRoutine()
@@ -100,7 +138,7 @@ public class FreezeUp : MonoBehaviour
             if (freezeMessage != null)
             {
                 // Show message
-                freezeMessage.text = "Type the word: " + targetWord;
+                UpdateFreezeMessage();
                 freezeMessage.gameObject.SetActive(true);
             }
 
@@ -113,5 +151,13 @@ public class FreezeUp : MonoBehaviour
                 freezeMessage.gameObject.SetActive(false);
             }
         }
+    }
+
+    IEnumerator FlashRed()
+    {
+        freezeMessage.text = $"<color=red>Type the word: {targetWord}</color>";
+        yield return new WaitForSeconds(0.5f);
+
+        UpdateFreezeMessage();
     }
 }
