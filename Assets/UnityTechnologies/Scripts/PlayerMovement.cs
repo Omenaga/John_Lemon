@@ -7,12 +7,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public float turnSpeed = 20f;
     public bool isFrozen = false;
-    public float walkingSpeed; // Normal walking speed
+    public float walkingSpeed = 1f; // Normal walking speed
     public float sprintSpeed;  // Sprinting speed
     public float maxSprintTime;   // Max sprinting time
     public float sprintRechargeDuration; // Recharge Rate
 
-    private float sprintTimer = 0f;             // Current available sprint time
+    private float sprintTimer;             // Current available sprint time
     private bool isSprinting = false;
     private bool canSprintAgain = true;
 

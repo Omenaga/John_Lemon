@@ -14,6 +14,15 @@ public class FreezeUp : MonoBehaviour
     private int index = 0;
     private bool waitingForInput = false;
 
+    // List of words for each difficulty
+    private Dictionary<string, string[]> difficultyWords = new Dictionary<string, string[]>()
+    {
+        { "Easy", new string[] {"e", "m", "c", "2"} },
+        { "Normal", new string[] {"go", "move", "run", "bolt"} },
+        { "Hard", new string[] {"escape", "break", "please"} },
+        { "Diabolical", new string[] { "nigerundayo" } }
+    };
+
     void Start()
     {
         // Get Difficulty
@@ -25,29 +34,19 @@ public class FreezeUp : MonoBehaviour
             case "Easy":
                 minFreezeInterval = 10f;
                 maxFreezeInterval = 20f;
-                targetWord = "e";
                 break;
             case "Normal":
                 minFreezeInterval = 10f;
                 maxFreezeInterval = 15f;
-                targetWord = "move";
                 break;
             case "Hard":
                 minFreezeInterval = 7f;
                 maxFreezeInterval = 12f;
-                targetWord = "escape";
                 break;
             case "Diabolical":
                 minFreezeInterval = 5f;
                 maxFreezeInterval = 10f;
-                targetWord = "nigerundayo";
                 break;
-        }
-
-         // Display the sentence on the UI
-        if (freezeMessage != null)
-        {
-            freezeMessage.text = "Type the word: " + targetWord;
         }
 
         StartCoroutine(FreezeRoutine());
@@ -89,6 +88,10 @@ public class FreezeUp : MonoBehaviour
             float waitTime = Random.Range(minFreezeInterval, maxFreezeInterval);
             yield return new WaitForSeconds(waitTime);
 
+            // Select a random word from the list based on difficulty
+            string[] words = difficultyWords[selectedDifficulty];
+            targetWord = words[Random.Range(0, words.Length)]; // Randomly select a word
+
             // Freezes player and sets up user input
             player.isFrozen = true;
             waitingForInput = true;
@@ -97,6 +100,7 @@ public class FreezeUp : MonoBehaviour
             if (freezeMessage != null)
             {
                 // Show message
+                freezeMessage.text = "Type the word: " + targetWord;
                 freezeMessage.gameObject.SetActive(true);
             }
 
