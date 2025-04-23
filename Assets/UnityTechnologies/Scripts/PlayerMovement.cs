@@ -32,20 +32,9 @@ public class PlayerMovement : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         m_AudioSource = GetComponent<AudioSource>();
         
-        sprintTimer = maxSprintTime;
         canSprintAgain = true;
         isSprinting = false;
         isFrozen = false;
-
-        if (sprintFill != null)
-        {
-            sprintFill.color = new Color(0.196f, 0.8039f, 0.196f); // Ectoplasm Green
-        }
-
-        if (sprintBar != null)
-        {
-            sprintBar.value = 1f; // Full bar
-        }
 
         // Get Difficulty
         string selectedDifficulty = DifficultySelection.difficultyLevel;
@@ -55,24 +44,36 @@ public class PlayerMovement : MonoBehaviour
         {
             case "Easy":
                 sprintSpeed = 3f;
-                maxSprintTime = 10f;
-                sprintRechargeDuration = 2.5f;
-                break;
-            case "Normal":
-                sprintSpeed = 2f;
                 maxSprintTime = 5f;
                 sprintRechargeDuration = 5f;
                 break;
+            case "Normal":
+                sprintSpeed = 2f;
+                maxSprintTime = 3f;
+                sprintRechargeDuration = 10f;
+                break;
             case "Hard":
                 sprintSpeed = 1.5f;
-                maxSprintTime = 2.5f;
-                sprintRechargeDuration = 10f;
+                maxSprintTime = 2f;
+                sprintRechargeDuration = 15f;
                 break;
             case "Diabolical":
                 sprintSpeed = 1.25f;
-                maxSprintTime = 1.5f;
+                maxSprintTime = 1f;
                 sprintRechargeDuration = 20f;
                 break;
+        }
+
+        sprintTimer = maxSprintTime;
+
+        if (sprintFill != null)
+        {
+            sprintFill.color = new Color(0.196f, 0.8039f, 0.196f); // Ectoplasm Green
+        }
+
+        if (sprintBar != null)
+        {
+            sprintBar.value = 1f; // Full bar
         }
     }
 
