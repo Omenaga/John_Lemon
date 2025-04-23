@@ -12,6 +12,7 @@ public class GameEnding : MonoBehaviour
     public AudioSource exitAudio;
     public CanvasGroup caughtBackgroundImageCanvasGroup;
     public AudioSource caughtAudio;
+    public CanvasGroup gameplayUICanvasGroup;
 
     bool m_IsPlayerAtExit;
     bool m_IsPlayerCaught;
@@ -53,9 +54,11 @@ public class GameEnding : MonoBehaviour
         
         m_Timer += Time.deltaTime;
         imageCanvasGroup.alpha = m_Timer / fadeDuration;
+        gameplayUICanvasGroup.alpha = 1f - (m_Timer / fadeDuration); // Fades out
         
         if (m_Timer > fadeDuration + displayImageDuration)
         {
+            // Change if Difficulty is added
             if (doRestart)
             {
                 SceneManager.LoadScene(0);

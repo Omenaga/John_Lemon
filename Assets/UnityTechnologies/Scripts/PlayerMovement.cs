@@ -31,7 +31,21 @@ public class PlayerMovement : MonoBehaviour
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
         m_AudioSource = GetComponent<AudioSource>();
+        
         sprintTimer = maxSprintTime;
+        canSprintAgain = true;
+        isSprinting = false;
+        isFrozen = false;
+
+        if (sprintFill != null)
+        {
+            sprintFill.color = new Color(0.196f, 0.8039f, 0.196f); // Ectoplasm Green
+        }
+
+        if (sprintBar != null)
+        {
+            sprintBar.value = 1f; // Full bar
+        }
     }
 
     // Update is called once per frame
