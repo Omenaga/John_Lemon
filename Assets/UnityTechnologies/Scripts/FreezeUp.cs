@@ -21,8 +21,8 @@ public class FreezeUp : MonoBehaviour
     {
         { "Easy", new string[] {"e", "m", "c", "2"} },
         { "Normal", new string[] {"go", "move", "run", "bolt"} },
-        { "Hard", new string[] {"escape", "break", "please", "motion"} },
-        { "Diabolical", new string[] {"nigerundayo", "progress", "movement", "breakout"} }
+        { "Hard", new string[] {"escape", "break", "please", "motion", "ghost", "breakout"} },
+        { "Diabolical", new string[] {"nigerundayo", "pseudonism", "thorough", "through", "though", "gargoyle", "LohnJemon"} }
     };
 
     void Start()
