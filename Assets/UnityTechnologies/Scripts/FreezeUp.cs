@@ -42,11 +42,11 @@ public class FreezeUp : MonoBehaviour
                 maxFreezeInterval = 15f;
                 break;
             case "Hard":
-                minFreezeInterval = 7f;
-                maxFreezeInterval = 12f;
+                minFreezeInterval = 8f;
+                maxFreezeInterval = 12.5f;
                 break;
             case "Diabolical":
-                minFreezeInterval = 5f;
+                minFreezeInterval = 7f;
                 maxFreezeInterval = 10f;
                 break;
         }
