@@ -44,21 +44,25 @@ public class PlayerMovement : MonoBehaviour
         {
             case "Easy":
                 sprintSpeed = 3f;
+                walkingSpeed = 1f;
                 maxSprintTime = 5f;
                 sprintRechargeDuration = 5f;
                 break;
             case "Normal":
-                sprintSpeed = 2f;
+                sprintSpeed = 2.5f;
+                walkingSpeed = 1f;
                 maxSprintTime = 3f;
                 sprintRechargeDuration = 10f;
                 break;
             case "Hard":
-                sprintSpeed = 1.5f;
+                sprintSpeed = 2f;
+                walkingSpeed = 1f;
                 maxSprintTime = 2f;
                 sprintRechargeDuration = 15f;
                 break;
             case "Diabolical":
-                sprintSpeed = 1.25f;
+                sprintSpeed = 2f;
+                walkingSpeed = 1.1f;
                 maxSprintTime = 1f;
                 sprintRechargeDuration = 20f;
                 break;
